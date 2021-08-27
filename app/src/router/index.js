@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import CreateID from "../views/CreateID.vue"
 import AddItems from "../views/AddItems.vue"
+import Login from "../views/Login.vue"
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ const routes = [
     path: "/AddItems/:ID",
     name: "AddItems",
     component: AddItems,
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    component: Login,
   },
 
 ];

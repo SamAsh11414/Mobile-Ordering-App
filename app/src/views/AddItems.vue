@@ -1,8 +1,9 @@
 <template>
     <div>
         <h1>Add items to your event</h1>
-        <p>Your Event Name is <span id=Nameevent></span></p>
+        <p>Your Event Name is {{NameOfEvent}}</p>
         <p>Your Event ID is {{userId}}</p>
+        <p>Your Event Password is {{SecretPassword}}</p>
     </div>
 </template>
 
@@ -13,30 +14,26 @@ const db = getFirestore();
 
 export default {
     name: "AddItems",
-    watch: {
-        $route(val) {
-            console.log(val.parms.ID, "from before created");
-        }
-    },
-    beforeMount() {
-        this.accessdb()
-    },
     data: function() {
         return {
-            userId: this.$route.params.ID
+            userId: this.$route.params.ID,
+            NameOfEvent: "Loading...",
+            SecretPassword: "Loading..."
         };
     },
-    computed: async function () {},
-    methods: {
-        addItem: function() {
-            console.log(this.$route.params.ID);
-        },
-        accessdb: async function() {
-            const docRef = doc(db, "ID", this.$route.params.ID);
-            const docSnap = await getDoc(docRef);
-            const NameOfevent = docSnap.data()["Name"]
-            console.log(NameOfevent);
-            document.getElementById("Nameevent").innerHTML = NameOfevent;
+    watch: {
+        '$route.params.ID': {
+            handler(ID) {
+                console.log("do you see this?");
+                const docRef = doc(db, "ID", ID);
+                getDoc(docRef).then(docSnap => {
+                    console.log("do you see this as well?");
+                    this.NameOfEvent = docSnap.data()["Name"]
+                    this.SecretPassword = docSnap.data()["SecretPW"] 
+                });
+            },
+            deep: true,
+            immediate: true
         }
     }
 };

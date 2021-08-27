@@ -37,6 +37,7 @@
 		font-weight: 100;
 		cursor: pointer;
 		margin-top: 6%;
+        margin: 6%;
 	}
 
 </style>
@@ -73,7 +74,8 @@
                 }
                 else {
                     const docRef = await addDoc(collection(db, "ID"), {
-                        Name: document.getElementById("NameOfEvent").value
+                        Name: document.getElementById("NameOfEvent").value,
+                        SecretPW: Math.floor(Math.random() * 1000000)
                     });
                 console.log("Document written with ID: ", docRef.id);
                 router.push({ name: 'AddItems', params: { ID: docRef.id } })

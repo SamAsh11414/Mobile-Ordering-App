@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import CreateID from "../views/CreateID.vue"
+import AddItems from "../views/AddItems.vue"
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,17 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/CreateID",
+    name: "CreateID",
+    component: CreateID,
+  },
+  {
+    path: "/AddItems/:ID",
+    name: "AddItems",
+    component: AddItems,
+  },
+
 ];
 
 const router = new VueRouter({

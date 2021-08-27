@@ -3,7 +3,8 @@
         <form>
             <label form="NameOfEvent">Name of Event:</label>
             <input type="text" id="NameOfEvent" name="NameOfEvent">
-            <br> <button v-on:click=Test><a id="NameOfEventButton">Create ID</a></button>
+            <br/>
+            <button v-on:click=createID>Create ID</button>
         </form>
     </div>
 </template>
@@ -41,9 +42,9 @@
 </style>
 
 <script>
-    import { initializeApp } from "firebase/app"
-    import { collection, addDoc, getFirestore } from "firebase/firestore"
-    import router from "../router"
+    import { initializeApp } from "firebase/app";
+    import { collection, addDoc, getFirestore } from "firebase/firestore";
+    import router from "../router";
 
     const firebaseConfig = initializeApp({
         apiKey: "AIzaSyDb0qvXE5dE3LH_-zLbKuf19eJPLu9C4w0",
@@ -62,7 +63,7 @@
     export default {
         name: "CreateID",
         methods: {
-            Test: async function(event) {
+            createID: async function(event) {
                 event.preventDefault();
                 console.log(document.getElementById("NameOfEvent").value)
                 console.log("Leaving this here, arived at test function")
@@ -72,7 +73,7 @@
                 }
                 else {
                     const docRef = await addDoc(collection(db, "ID"), {
-                        test: "test"
+                        Name: document.getElementById("NameOfEvent").value
                     });
                 console.log("Document written with ID: ", docRef.id);
                 router.push({ name: 'AddItems', params: { ID: docRef.id } })

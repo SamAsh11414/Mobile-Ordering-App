@@ -14,6 +14,7 @@
 
 <script>
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import router from "../router";
 
 const db = getFirestore();
 
@@ -33,6 +34,7 @@ export default {
                 console.log(EventPW);
                 if (EventPW == docSnap.data()["SecretPW"]){
                     console.log("Good Job")
+                    router.push({ path: `/AddItems/${EventID}` })
                 }
             }
         }

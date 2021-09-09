@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import CreateID from "../views/CreateID.vue"
 import AddItems from "../views/AddItems.vue"
 import Login from "../views/Login.vue"
+import JoinEvent from "../views/JoinEvent.vue"
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,11 @@ const routes = [
     path: "/Login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/JoinEvent",
+    name: "JoinEvent",
+    component: JoinEvent,
   },
 
 ];

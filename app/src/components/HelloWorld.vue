@@ -3,7 +3,7 @@
     <main>
       <h1>Welcome to the Brooklyn Technical High School Contactless Concessions App</h1>
 	    <p>Explanation explain words and stuff. I really dont know what to put here yet to explain the app but I need to take up space so I will continue to write here so it will looks nice. Glaciers and ice sheets hold about 69 percent of the world's freshwater. The fastest gust of wind ever recorded on Earth was 253 miles per hour. The best place in the world to see rainbows is in Hawaii.</p>
-	    <button>Join an Event</button>
+	    <button><router-link to="/JoinEvent">Join an Event</router-link></button>
 	    <button><div id="buttonNav"> <router-link to="/CreateID">Start an Event</router-link></div></button>
     </main>
   </div>
